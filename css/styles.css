@@ -132,7 +132,9 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .dzs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
 .dz{display:grid;gap:8px;align-content:start}
 .plan{background:#2b2b2b;aspect-ratio:16/10;display:flex;align-items:center;justify-content:center;padding:6%;margin-bottom:10px}
-.plan img{width:auto;height:auto;max-height:100%;max-width:100%;object-fit:contain}
+/* image pinned inside the 6% padding; % max-height on an aspect-ratio box is unreliable in iOS Safari */
+.plan{position:relative;overflow:hidden}
+.plan img{position:absolute;left:6%;right:6%;top:9.6%;bottom:9.6%;width:88%;height:80.8%;object-fit:contain}
 .dz h3{font:800 34px/1 var(--display);letter-spacing:-.02em}
 .fit{color:#bdbdbd}.fit b{color:var(--white)}
 .dz .tk{margin-top:8px}
