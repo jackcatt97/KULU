@@ -9,7 +9,16 @@ const FORMSPREE_ID = "xkjjvzyz";
 const CONFIG = {
   EMAIL: "info@kulugroup.co.za",
   WHATSAPP: "+27 63 281 7102",
-  PARTNER_EMAIL: "taylor@kulugroup.co.za"
+  PARTNER_EMAIL: "taylor@kulugroup.co.za",
+
+  // App store links. Leave empty until the app is live: the buttons and the
+  // QR code (kulugroup.co.za/app) then show a "coming soon" page instead.
+  APP_STORE_URL: "",
+  PLAY_STORE_URL: "",
+
+  // Opening hours used for the "Open now" badge (24-hour, South African time)
+  OPENS: "08:00",
+  CLOSES: "18:00"
 };
 
 /* ------------------------------------------------------------------ */
@@ -28,6 +37,32 @@ document.querySelectorAll("[data-config]").forEach(function (a) {
 var yr = document.getElementById("yr");
 if (yr) yr.textContent = new Date().getFullYear();
 
+// App store buttons: real store links once CONFIG has them
+document.querySelectorAll("[data-store]").forEach(function (a) {
+  var url = CONFIG[a.dataset.store], label = a.querySelector("[data-store-label]");
+  if (url) a.href = url;
+  else if (label) label.textContent = "Coming soon to";
+});
+
+// /app (the QR code target): send phones to the right store
+if (document.body.hasAttribute("data-app-redirect")) {
+  var ua = navigator.userAgent, target = "";
+  if (/iPhone|iPad|iPod/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1)) target = CONFIG.APP_STORE_URL;
+  else if (/Android/.test(ua)) target = CONFIG.PLAY_STORE_URL;
+  if (target) location.replace(target);
+  else document.body.classList.add("show-stores");
+}
+
+// "Open now" badge from CONFIG.OPENS and CONFIG.CLOSES
+document.querySelectorAll("[data-open-status]").forEach(function (el) {
+  var parts = new Intl.DateTimeFormat("en-GB", { timeZone: "Africa/Johannesburg", hour: "2-digit", minute: "2-digit", hourCycle: "h23" }).format(new Date());
+  var now = parts.replace(":", ""), open = CONFIG.OPENS.replace(":", ""), close = CONFIG.CLOSES.replace(":", "");
+  var isOpen = now >= open && now < close, text = el.querySelector(".status-text");
+  el.classList.toggle("open", isOpen);
+  text.innerHTML = (isOpen ? "<b>Open now</b> · until " + CONFIG.CLOSES : "Closed now · opens " + CONFIG.OPENS) +
+    (el.closest(".hero") ? " · KULU @FitLife" : "");
+});
+
 // Copy buttons
 document.querySelectorAll("[data-copy]").forEach(function (b) {
   b.addEventListener("click", function () {
@@ -40,6 +75,7 @@ document.querySelectorAll("[data-copy]").forEach(function (b) {
 
 // Mobile menu
 var menuBtn = document.querySelector(".menu-btn"), mnav = document.getElementById("mnav");
+if (menuBtn && mnav) {
 function setMenu(open) {
   menuBtn.setAttribute("aria-expanded", open);
   menuBtn.querySelector(".vh").textContent = open ? "Close menu" : "Menu";
@@ -53,11 +89,13 @@ document.addEventListener("keydown", function (e) {
 document.addEventListener("click", function (e) {
   if (!mnav.hidden && !e.target.closest("nav")) setMenu(false);
 });
-matchMedia("(min-width: 641px)").addEventListener("change", function (e) { if (e.matches) setMenu(false); });
+matchMedia("(min-width: " + (mnav.dataset.bp || "641px") + ")").addEventListener("change", function (e) { if (e.matches) setMenu(false); });
+}
 
 // Form: enquiry type toggle
-var form = document.getElementById("f"),
-    tp = document.getElementById("t-partner"), tn = document.getElementById("t-news"),
+var form = document.getElementById("f");
+if (form) {
+var tp = document.getElementById("t-partner"), tn = document.getElementById("t-news"),
     sw = document.getElementById("site-wrap");
 function sync() { sw.hidden = !tp.checked; }
 tp.addEventListener("change", sync); tn.addEventListener("change", sync);
@@ -94,3 +132,4 @@ form.addEventListener("submit", function (e) {
     .catch(function () { err.hidden = false; })
     .finally(function () { sendBtn.disabled = false; sendBtn.textContent = "Send"; });
 });
+}
