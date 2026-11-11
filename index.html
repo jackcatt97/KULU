@@ -60,7 +60,7 @@
 <header class="hero">
   <div class="in">
     <div class="hero-copy">
-      <p class="status" data-open-status><span class="dot"></span><span class="status-text">KULU @FitLife · Open 08:00 to 18:00</span></p>
+      <p class="status" data-open-status><span class="dot"></span><span class="status-text">KULU @FitLife · Opening 11 January</span></p>
       <h1>Shop.<br>Wash.<br><span class="lime">Shap shap.</span></h1>
       <p class="lede">Book a wash in the KULU app, hand over your keys and get on with your day. We’ll show you when your car is clean and ready.</p>
       <div class="cta">
@@ -154,7 +154,7 @@
       </article>
     </div>
     <div class="extras">
-      <div class="extra"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h13v6a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5zM17 10h1.5a2.5 2.5 0 0 1 0 5H17M8 2v3M12 2v3"/></svg><div><h3>Add a coffee</h3><p>Order a KULU coffee with your booking and it’s ready when you are.</p></div></div>
+      <div class="extra"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h13v6a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5zM17 10h1.5a2.5 2.5 0 0 1 0 5H17M8 2v3M12 2v3"/></svg><div><h3>Add a coffee</h3><p>At sites with a KULU Coffee bar, order one with your booking and it’s ready when you are.</p></div></div>
       <div class="extra"><span class="stamps" aria-hidden="true"><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i><i></i><i></i><i></i></span><div><h3>K Loyalty card</h3><p>Every wash you collect adds a stamp. Eight stamps fills your card.</p></div></div>
     </div>
     <p class="note">Pay by card or tap at the KULU counter when you collect your car. Online payment in the app is coming soon.</p>
@@ -170,16 +170,18 @@
       <article class="site">
         <div class="site-img"><img src="/assets/images/site-illustration-900.jpg" width="900" height="361" loading="lazy" decoding="async" alt="Illustration of a KULU site with coffee container and wash bays"></div>
         <div class="site-body">
-          <p class="status" data-open-status><span class="dot"></span><span class="status-text">Open 08:00 to 18:00</span></p>
+          <p class="status" data-open-status><span class="dot"></span><span class="status-text">Opening 11 January</span></p>
           <h3>KULU @FitLife</h3>
           <p class="addr"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.1-7-11.5a7 7 0 0 1 14 0C19 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Fit Life Paarl, Western Cape</p>
+          <p class="site-intro">At the FitLife gym. Work out while we wash, and your car’s ready when you’re done.</p>
           <dl>
+            <div><dt>Opening</dt><dd>11 January 2027</dd></div>
             <div><dt>Hours</dt><dd>08:00 to 18:00</dd></div>
-            <div><dt>Slots</dt><dd>Every 15 minutes</dd></div>
-            <div><dt>Coffee</dt><dd>Add one to your booking</dd></div>
+            <div><dt>Coffee</dt><dd class="dd-more">The Brew Crew, on site <button class="more" type="button" data-dialog="site-fitlife" data-dialog-focus="brewcrew" aria-label="More about coffee at The Brew Crew">More</button></dd></div>
           </dl>
           <div class="row">
-            <a class="btn sm" href="#app">Book here</a>
+            <button class="btn sm" type="button" data-dialog="site-fitlife">More about this KULU</button>
+            <a class="btn sm ghost" href="#app">Book here</a>
             <a class="btn sm ghost" href="https://www.google.com/maps/search/?api=1&amp;query=Fit+Life+Paarl" target="_blank" rel="noopener">Directions</a>
           </div>
         </div>
@@ -193,6 +195,37 @@
     </div>
   </div>
 </section>
+
+<dialog class="sheet" id="site-fitlife" aria-labelledby="fitlife-title">
+  <div class="sheet-in">
+    <button class="sheet-x" type="button" data-dialog-close aria-label="Close"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
+    <p class="k">KULU @FitLife</p>
+    <h3 id="fitlife-title">Wash while you work out.</h3>
+    <p class="status soon"><span class="dot"></span><span>Opening <b>11 January 2027</b></span></p>
+    <p class="sheet-lede">We’re at the FitLife gym in Paarl. Hand us your keys on your way in, do your workout, and your car will be clean and ready when you’re finished.</p>
+
+    <h4>What you can do here</h4>
+    <ul class="dos">
+      <li><b>Get your car washed</b><span>Express wash, R100. Book a 15-minute slot in the app, or drive in and grab the next one.</span></li>
+      <li><b>Work out while we wash</b><span>Train at FitLife. By the time you’re done, so are we.</span></li>
+      <li id="brewcrew" tabindex="-1"><b>Grab a coffee at The Brew Crew</b><span>There’s no KULU Coffee bar at this site, but there is coffee on site. The Brew Crew is part of FitLife, so stop for one while we finish your car.</span></li>
+      <li><b>Collect your stamps</b><span>Every wash you collect adds a stamp to your K Loyalty card in the app.</span></li>
+    </ul>
+
+    <h4>Good to know</h4>
+    <dl>
+      <div><dt>Where</dt><dd>Fit Life Paarl, Western Cape</dd></div>
+      <div><dt>Hours</dt><dd>08:00 to 18:00</dd></div>
+      <div><dt>Slots</dt><dd>Every 15 minutes</dd></div>
+      <div><dt>Pay</dt><dd>Card or tap at the KULU counter when you collect</dd></div>
+    </dl>
+
+    <div class="row">
+      <a class="btn sm" href="#app" data-dialog-close>Book in the app</a>
+      <a class="btn sm ghost" href="https://www.google.com/maps/search/?api=1&amp;query=Fit+Life+Paarl" target="_blank" rel="noopener">Directions</a>
+    </div>
+  </div>
+</dialog>
 
 <!-- APP -->
 <section class="app" id="app">
@@ -248,7 +281,7 @@
 <!-- COFFEE + SEND -->
 <section class="more">
   <div class="in">
-    <div class="m coffee"><img src="/assets/logos/kulu-coffee-white.svg" alt="KULU Coffee" width="1339" height="234"><p>A coffee bar right by the wash bays. Have one while we finish, or take one for the road.</p></div>
+    <div class="m coffee"><img src="/assets/logos/kulu-coffee-white.svg" alt="KULU Coffee" width="1339" height="234"><p>At our bigger sites, a coffee bar right by the wash bays. Have one while we finish, or take one for the road.</p></div>
     <div class="m"><img src="/assets/logos/kulu-send-white.svg" alt="KULU Send" width="1112" height="234"><p>Parcel lockers at larger sites, so your deliveries wait with your car.</p></div>
   </div>
 </section>

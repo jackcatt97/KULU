@@ -18,7 +18,10 @@ const CONFIG = {
 
   // Opening hours used for the "Open now" badge (24-hour, South African time)
   OPENS: "08:00",
-  CLOSES: "18:00"
+  CLOSES: "18:00",
+
+  // First day the site is open (YYYY-MM-DD). Before it, the badge says "Opening 11 January"
+  OPENING_DATE: "2027-01-11"
 };
 
 /* ------------------------------------------------------------------ */
@@ -53,14 +56,36 @@ if (document.body.hasAttribute("data-app-redirect")) {
   else document.body.classList.add("show-stores");
 }
 
-// "Open now" badge from CONFIG.OPENS and CONFIG.CLOSES
+// "Open now" badge from CONFIG.OPENING_DATE, CONFIG.OPENS and CONFIG.CLOSES
 document.querySelectorAll("[data-open-status]").forEach(function (el) {
+  var tz = "Africa/Johannesburg", text = el.querySelector(".status-text"), suffix = el.closest(".hero") ? " · KULU @FitLife" : "";
+  var today = new Intl.DateTimeFormat("en-CA", { timeZone: tz }).format(new Date()); // YYYY-MM-DD
+  if (CONFIG.OPENING_DATE && today < CONFIG.OPENING_DATE) {
+    var d = new Date(CONFIG.OPENING_DATE + "T12:00:00Z");
+    el.classList.add("soon");
+    text.innerHTML = "<b>Opening " + new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "long", timeZone: "UTC" }).format(d) + "</b>" + suffix;
+    return;
+  }
   var parts = new Intl.DateTimeFormat("en-GB", { timeZone: "Africa/Johannesburg", hour: "2-digit", minute: "2-digit", hourCycle: "h23" }).format(new Date());
   var now = parts.replace(":", ""), open = CONFIG.OPENS.replace(":", ""), close = CONFIG.CLOSES.replace(":", "");
-  var isOpen = now >= open && now < close, text = el.querySelector(".status-text");
+  var isOpen = now >= open && now < close;
   el.classList.toggle("open", isOpen);
   text.innerHTML = (isOpen ? "<b>Open now</b> · until " + CONFIG.CLOSES : "Closed now · opens " + CONFIG.OPENS) +
-    (el.closest(".hero") ? " · KULU @FitLife" : "");
+    suffix;
+});
+
+// Pop-up panels (e.g. "More about this KULU"). data-dialog-focus jumps to a part of the panel
+document.querySelectorAll("[data-dialog]").forEach(function (btn) {
+  var d = document.getElementById(btn.dataset.dialog);
+  if (!d || !d.showModal) return;
+  btn.addEventListener("click", function () {
+    d.showModal();
+    var target = btn.dataset.dialogFocus && document.getElementById(btn.dataset.dialogFocus);
+    if (target) { target.scrollIntoView({ block: "center" }); target.focus(); target.classList.add("hl"); setTimeout(function () { target.classList.remove("hl"); }, 1600); }
+  });
+});
+document.querySelectorAll("dialog").forEach(function (d) {
+  d.addEventListener("click", function (e) { if (e.target === d || e.target.closest("[data-dialog-close]")) d.close(); });
 });
 
 // Copy buttons
