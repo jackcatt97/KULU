@@ -9,7 +9,7 @@
   var stage = document.querySelector(".stage");
   var scroller = document.getElementById("scroller");
   var GY = 586;               // car ground line
-  var CAR_W = 190;
+  var CAR_W = 202;
   var LIME = "#D3FD5C";
 
   /* ---------- helpers ---------- */
@@ -115,39 +115,42 @@
   }
 
   function car() {
-    var body = "M8 -16 C2 -16 0 -20 0 -28 L0 -36 C0 -44 6 -48 16 -50 L52 -54 C64 -72 80 -82 104 -82 L132 -82 C150 -82 160 -70 168 -54 L178 -52 C186 -50 190 -44 190 -36 L190 -24 C190 -18 186 -16 182 -16 Z";
+    var body = "M6 -16 C2 -16 0 -19 0 -24 L0 -54 L98 -54 L104 -81 C105 -86 108 -88 113 -88 L148 -88 C153 -88 156 -86 158 -82 L172 -59 L194 -56 C199 -55 202 -51 202 -45 L202 -24 C202 -19 199 -16 195 -16 Z";
     seed = 3;
     var dirt = "";
-    for (var i = 0; i < 22; i++) dirt += '<ellipse cx="' + (8 + rnd() * 178).toFixed(0) + '" cy="' + (-18 - rnd() * 40).toFixed(0) + '" rx="' + (4 + rnd() * 9).toFixed(0) + '" ry="' + (3 + rnd() * 6).toFixed(0) + '"/>';
+    for (var i = 0; i < 22; i++) dirt += '<ellipse cx="' + (6 + rnd() * 192).toFixed(0) + '" cy="' + (-18 - rnd() * 40).toFixed(0) + '" rx="' + (4 + rnd() * 9).toFixed(0) + '" ry="' + (3 + rnd() * 6).toFixed(0) + '"/>';
     var foam = "";
     seed = 5;
-    for (i = 0; i < 26; i++) foam += '<circle class="b" cx="' + (6 + rnd() * 178).toFixed(0) + '" cy="' + (-20 - rnd() * 68).toFixed(0) + '" r="' + (6 + rnd() * 10).toFixed(0) + '"/>';
+    for (i = 0; i < 26; i++) foam += '<circle class="b" cx="' + (6 + rnd() * 192).toFixed(0) + '" cy="' + (-20 - rnd() * 66).toFixed(0) + '" r="' + (6 + rnd() * 10).toFixed(0) + '"/>';
     var spark = "";
-    [[20, -96, 1], [170, -92, .8], [96, -112, 1.2], [200, -40, .7], [-12, -50, .8], [140, -120, .7]].forEach(function (s, k) {
+    [[20, -76, 1], [180, -96, .8], [120, -116, 1.2], [214, -40, .7], [-12, -50, .8], [60, -84, .7]].forEach(function (s, k) {
       spark += '<path class="s" data-k="' + k + '" transform="translate(' + s[0] + ' ' + s[1] + ') scale(' + s[2] + ')" d="M0 -12 C1 -3 3 -1 12 0 C3 1 1 3 0 12 C-1 3 -3 1 -12 0 C-3 -1 -1 -3 0 -12Z"/>';
     });
     function wheel(id, x) {
       return '<g transform="translate(' + x + ' -17)"><g id="' + id + '"><circle r="17" fill="#121212"/><circle r="9.5" fill="#d8d8d8"/><path d="M0 -9 V9 M-9 0 H9" stroke="#8a8a8a" stroke-width="2.4"/><circle r="3" fill="#555"/></g></g>';
     }
     return '<g id="car">' +
-      '<path id="beam" d="M188 -40 L520 -90 L520 20 Z" fill="url(#beamGrad)" opacity="0"/>' +
-      '<ellipse cx="95" cy="2" rx="96" ry="6" fill="rgba(0,0,0,.35)"/>' +
+      '<path id="beam" d="M200 -46 L530 -96 L530 14 Z" fill="url(#beamGrad)" opacity="0"/>' +
+      '<ellipse cx="101" cy="2" rx="102" ry="6" fill="rgba(0,0,0,.35)"/>' +
       '<g id="puffs" fill="#9a9a9a"><circle r="6"/><circle r="8"/><circle r="10"/></g>' +
       '<g id="carBody">' +
         '<clipPath id="carClip"><path d="' + body + '"/></clipPath>' +
         '<path d="' + body + '" fill="' + LIME + '"/>' +
-        '<path d="M8 -16 h174 c4 0 8 -2 8 -8 v-6 H0 v6 c0 6 4 8 8 8z" fill="rgba(0,0,0,.12)"/>' +
-        '<path d="M60 -54 C70 -70 84 -76 102 -76 L112 -76 L112 -54 Z M118 -76 L132 -76 C146 -76 154 -66 160 -54 L118 -54 Z" fill="#16181d"/>' +
-        '<circle id="driver" cx="100" cy="-62" r="7.5" fill="#3a3a3a"/>' +
-        '<path d="M66 -58 L76 -70" stroke="rgba(255,255,255,.35)" stroke-width="3" stroke-linecap="round"/>' +
-        '<path d="M114 -52 V-20 M58 -52 V-22" stroke="rgba(0,0,0,.25)" stroke-width="1.6"/><rect x="122" y="-44" width="12" height="3" rx="1.5" fill="rgba(0,0,0,.4)"/>' +
-        '<rect x="181" y="-44" width="8" height="7" rx="2" fill="#fff6c8"/><rect id="tail" x="1" y="-44" width="6" height="8" rx="2" fill="#c23b2a"/>' +
+        '<path d="M6 -16 h189 c4 0 7 -3 7 -8 v-6 H0 v6 c0 5 2 8 6 8z" fill="rgba(0,0,0,.12)"/>' +
+        '<path d="M18 -16 A22 22 0 0 1 62 -16 Z M143 -16 A22 22 0 0 1 187 -16 Z" fill="rgba(0,0,0,.22)"/>' +
+        '<rect x="0" y="-54" width="98" height="5" fill="rgba(0,0,0,.18)"/><path d="M5 -50 V-22 M98 -54 V-20" stroke="rgba(0,0,0,.22)" stroke-width="1.6"/>' +
+        '<path d="M110 -59 L115 -81 L132 -81 L132 -59 Z M137 -81 L148 -81 C151 -81 153 -80 154 -78 L166 -59 L137 -59 Z" fill="#16181d"/>' +
+        '<circle id="driver" cx="146" cy="-67" r="7.5" fill="#3a3a3a"/>' +
+        '<path d="M156 -74 L162 -64" stroke="rgba(255,255,255,.35)" stroke-width="3" stroke-linecap="round"/>' +
+        '<path d="M134 -57 V-22" stroke="rgba(0,0,0,.25)" stroke-width="1.6"/><rect x="140" y="-50" width="12" height="3" rx="1.5" fill="rgba(0,0,0,.4)"/>' +
+        '<path d="M166 -62 h7 v6 h-5z" fill="#16181d"/>' +
+        '<rect x="194" y="-51" width="8" height="8" rx="2" fill="#fff6c8"/><rect x="196" y="-30" width="6" height="6" rx="1" fill="rgba(0,0,0,.3)"/><rect id="tail" x="0" y="-50" width="5" height="12" rx="1.5" fill="#c23b2a"/>' +
         '<g id="dirt" clip-path="url(#carClip)" fill="#6b4a2b">' + dirt + '</g>' +
       '</g>' +
-      wheel("w1", 46) + wheel("w2", 150) +
+      wheel("w1", 40) + wheel("w2", 165) +
       '<g id="foam" fill="#fff" stroke="#dfe9f2" stroke-width="1.5">' + foam + '</g>' +
       '<g id="spark" fill="#fff">' + spark + '</g>' +
-      '<g id="ready" transform="translate(95 -150)"><g id="readyIn"><rect x="-98" y="-22" width="196" height="44" rx="22" fill="#0A0A0A" stroke="' + LIME + '" stroke-width="2"/>' +
+      '<g id="ready" transform="translate(101 -152)"><g id="readyIn"><rect x="-98" y="-22" width="196" height="44" rx="22" fill="#0A0A0A" stroke="' + LIME + '" stroke-width="2"/>' +
         '<circle cx="-74" cy="0" r="11" fill="' + LIME + '"/><path d="M-79 0 l4 4 l7 -8" stroke="#0A0A0A" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>' +
         '<text x="-56" y="5" fill="#fff" font-size="14" font-weight="700" font-family="Archivo, Arial, sans-serif">Your car is ready</text>' +
         '<path d="M-6 22 l6 8 l6 -8z" fill="#0A0A0A"/></g></g>' +
@@ -337,7 +340,7 @@
     // the driver walks to the shops and back
     var out = inWash && w > .06 && w < .97;
     els.driver.style.opacity = out ? 0 : 1;
-    var doorX = 1885, carDoor = x + 112, px = carDoor, dir = 1, pO = 0, bag = 0;
+    var doorX = 1885, carDoor = x + 136, px = carDoor, dir = 1, pO = 0, bag = 0;
     if (inWash) {
       if (w < .36) { px = lerp(carDoor, doorX, ease(clamp((w - .06) / .26))); pO = smooth(.06, .09, w) * (1 - smooth(.32, .36, w)); }
       else if (w > .8) { px = lerp(doorX, carDoor, ease(clamp((w - .8) / .15))); pO = smooth(.8, .83, w) * (1 - smooth(.94, .97, w)); dir = -1; bag = 1; }
