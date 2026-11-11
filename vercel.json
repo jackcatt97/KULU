@@ -1,7 +1,19 @@
 {
+  "redirects": [
+    {
+      "source": "/new",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/new/(.*)",
+      "destination": "/",
+      "permanent": false
+    }
+  ],
   "headers": [
     {
-      "source": "/(new|app)(/.*)?",
+      "source": "/app(/.*)?",
       "headers": [
         {
           "key": "X-Robots-Tag",

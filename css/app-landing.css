@@ -54,6 +54,7 @@ nav>.in{display:flex;align-items:center;justify-content:space-between;gap:16px;p
 .links a{font:600 15px/1 var(--body);text-decoration:none;color:var(--grey2)}
 .links a:hover{color:var(--white)}
 .links a.pill{background:var(--white);color:var(--bg);padding:12px 18px;border-radius:999px}
+.links .africa{display:block;width:24px;height:auto}
 .menu-btn{display:none;align-items:center;justify-content:center;width:44px;height:44px;margin-right:-10px;padding:0;background:none;border:0;color:var(--white);cursor:pointer}
 .menu-btn svg{width:24px;height:24px;stroke:currentColor;stroke-width:2.5;fill:none;overflow:visible}
 .menu-btn path{transition:transform .2s;transform-origin:12px 12px}
@@ -62,7 +63,8 @@ nav>.in{display:flex;align-items:center;justify-content:space-between;gap:16px;p
 .mnav{position:absolute;left:0;right:0;top:100%;background:var(--bg);border-bottom:1px solid var(--line)}
 .mnav .in{display:grid;padding-block:4px 16px}
 .mnav a{text-decoration:none;font:800 22px/1.2 var(--wide);font-stretch:112%;padding:16px 0;border-top:1px solid var(--line)}
-@media (max-width:860px){.links a:not(.pill){display:none}.menu-btn{display:inline-flex}}
+@media (max-width:860px){.links a:not(.pill){display:none}.menu-btn{display:inline-flex}.links{gap:16px}}
+@media (max-width:400px){.brand img{width:92px}.links{gap:12px}.links a.pill{padding:11px 14px;font-size:14px}.links .africa{width:22px}}
 @media (min-width:861px){.mnav{display:none!important}}
 
 /* phone frame and app screens */
@@ -206,7 +208,7 @@ nav>.in{display:flex;align-items:center;justify-content:space-between;gap:16px;p
 
 /* trust */
 .trust h2{max-width:11em}
-.tgrid{margin-top:48px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.tgrid{margin-top:48px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
 .tgrid div{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:26px}
 .tgrid div::before{content:"";display:block;width:12px;height:12px;border-radius:50%;background:var(--lime);margin-bottom:34px}
 .tgrid h3{font:800 20px/1.2 var(--wide);font-stretch:112%}
@@ -278,14 +280,13 @@ nav>.in{display:flex;align-items:center;justify-content:space-between;gap:16px;p
 @media (max-width:1080px){
   .app .in{grid-template-columns:minmax(0,1fr) auto}
   .app-phone{display:none}
-  .tgrid{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media (max-width:900px){
   .hero .in,.how .in,.faq .in,.contact .in,.fgrid{grid-template-columns:minmax(0,1fr)}
   .hero .in{padding-block:40px 72px}
   .hero-phone{width:min(84%,320px)}
   .how .phone{width:min(84%,320px)}
-  .wgrid{grid-template-columns:minmax(0,1fr)}
+  .wgrid,.tgrid{grid-template-columns:minmax(0,1fr)}
   .extras,.more .in{grid-template-columns:minmax(0,1fr)}
   .app .in{grid-template-columns:minmax(0,1fr)}
   .faq .in{gap:32px}
@@ -294,7 +295,7 @@ nav>.in{display:flex;align-items:center;justify-content:space-between;gap:16px;p
   .hero h1{font-size:clamp(46px,14.5vw,64px)}
   .hero .lede{font-size:18px}
   .cta .btn{flex:1 1 auto}
-  .row2,.tgrid{grid-template-columns:minmax(0,1fr)}
+  .row2{grid-template-columns:minmax(0,1fr)}
   .wash .price{font-size:46px}
   .site-body,.wash,.form{padding:22px}
   .stores .store{flex:1 1 auto}

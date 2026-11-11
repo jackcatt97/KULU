@@ -1,0 +1,38 @@
+/* /ownerkulu: the original site restyled to sit with the new homepage.
+   Loaded after styles.css: lime replaces the tan accent, Archivo replaces Poppins. */
+:root{
+  --wash:#D3FD5C;--coffee:#D3FD5C;--lime:#D3FD5C;
+  --ink:#0A0A0A;
+  --display:"Archivo","Arial Black",Arial,sans-serif;
+  --body:"Archivo","Helvetica Neue",Arial,sans-serif;
+}
+:focus-visible{outline-color:var(--lime)}
+.form :focus-visible,.contact :focus-visible{outline-color:var(--ink)}
+
+/* wide, heavy headings like the app */
+h1,h2,.ut h3,.sizes b,.five b,.dz h3,.sub3,.track div{font-stretch:125%;font-weight:900;letter-spacing:-.02em}
+.hero h1{font-size:clamp(46px,6vw,92px)!important;white-space:normal}
+.deal h2{font-size:clamp(34px,5vw,68px)}
+.coffee h2,.partner h2,.centres h2{font-size:clamp(38px,5.6vw,84px)}
+.contact h2{font-size:clamp(44px,6.4vw,96px)}
+.list h3,.two h3,.five h4,.sizes h3{font-stretch:112%;font-weight:800}
+
+/* nav: logo links home */
+nav .home{display:block}
+
+/* rounded buttons, as in the app */
+.btn{border-radius:14px}
+.btn.light{background:var(--lime)!important;color:var(--ink)!important}
+
+/* lime is too light for small marks on the pale sections: keep those black */
+.list i{color:var(--ink)!important}
+.ut.b{color:var(--ink)!important}.ut.b p{color:#1f2610!important}
+.coffee p.send{border-top-color:var(--ink)}
+.cup{box-shadow:14px 14px 0 var(--ink)}
+
+/* form and contact to match the homepage */
+.form input,.form textarea{border-radius:12px;border-width:1.5px}
+.seg{border-radius:14px;overflow:hidden;border-width:1.5px}
+.msg{border-radius:12px}
+
+@media (max-width:480px){.hero h1{font-size:clamp(40px,12.5vw,56px)!important}}

@@ -3,14 +3,18 @@
 The KULU site: a plain static site with no framework and no build step. `reference/full-site-preview.html` is the approved design this site was built from. It stays in the repo for reference but isn't deployed (see `.vercelignore`).
 
 ```
-index.html          the page
-404.html            "Lost? Shap shap, back home."
-css/styles.css      all styles
-js/main.js          contact details, Formspree, form, copy buttons, mobile menu
-assets/logos/       KULU logos as SVG (black and white versions)
-assets/images/      hero illustration, layout plans, social share image
+index.html             homepage: the customer site (book in the app, washes, find us)
+ownerkulu/index.html   kulugroup.co.za/ownerkulu: the partner site ("Own a KULU")
+app/index.html         kulugroup.co.za/app: the QR code target, sends phones to the right app store
+404.html               "Lost? Shap shap, back home."
+css/app-landing.css    styles for the homepage and /app
+css/styles.css         styles for /ownerkulu (from the approved design)
+css/owner.css          /ownerkulu restyle: lime accent and Archivo headings
+js/main.js             settings (contact details, Formspree, app store links, hours) and all page behaviour
+assets/logos/          KULU logos as SVG (black and white versions)
+assets/images/         illustration, layout plans, QR code, social share image
 favicon.svg, favicon-32.png, apple-touch-icon.png
-robots.txt, sitemap.xml, vercel.json
+robots.txt, sitemap.xml, vercel.json (also redirects the old /new preview to the homepage)
 ```
 
 To preview it locally, run a static server in this folder and open http://localhost:8080:
@@ -29,9 +33,16 @@ const FORMSPREE_ID = "xkjjvzyz";
 const CONFIG = {
   EMAIL: "info@kulugroup.co.za",
   WHATSAPP: "+27 63 281 7102",
-  PARTNER_EMAIL: "taylor@kulugroup.co.za"
+  PARTNER_EMAIL: "taylor@kulugroup.co.za",
+  APP_STORE_URL: "",
+  PLAY_STORE_URL: "",
+  OPENS: "08:00",
+  CLOSES: "18:00"
 };
 ```
+
+- **APP_STORE_URL / PLAY_STORE_URL**: paste the store links when the app is live. The App Store and Google Play buttons, and the QR code (which points to `kulugroup.co.za/app`), start sending people to the stores straight away. While they're empty, the buttons say "Coming soon".
+- **OPENS / CLOSES**: drive the "Open now" badge on the homepage (South African time, every day).
 
 - **FORMSPREE_ID** is the last part of your form's endpoint. If Formspree shows `https://formspree.io/f/abcdwxyz`, the ID is `abcdwxyz`.
 - **CONFIG** fills in the "Say hello" section. The WhatsApp link (`https://wa.me/27632817102`) is built from the number automatically, and the emails become `mailto:` links.
