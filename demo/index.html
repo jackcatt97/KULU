@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en-ZA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>KULU · Take a drive</title>
+<meta name="description" content="Scroll to drive: book, wash, coffee and the three KULU site designs.">
+<meta name="robots" content="noindex, nofollow"><!-- demo at /demo: not linked from the main site -->
+<meta name="theme-color" content="#0A0A0A">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..900&display=swap">
+<link rel="stylesheet" href="/demo/demo.css">
+<script src="/demo/demo.js" defer></script>
+</head>
+<body>
+
+<header class="top">
+  <a class="logo" href="/"><img src="/assets/logos/kulu-logo-white.svg" alt="KULU home" width="606" height="246"></a>
+  <nav class="chapters" aria-label="Chapters">
+    <button type="button" data-go="0.13">Book</button>
+    <button type="button" data-go="0.31">Wash</button>
+    <button type="button" data-go="0.57">Coffee</button>
+    <button type="button" data-go="0.77">Plans</button>
+    <button type="button" data-go="1">Go</button>
+  </nav>
+  <a class="pill" href="/#app">Get the app</a>
+  <div class="bar" aria-hidden="true"><i></i></div>
+</header>
+
+<main class="scroller" id="scroller">
+  <div class="stage">
+    <svg id="scene" aria-hidden="true" preserveAspectRatio="xMinYMax slice"></svg>
+
+    <!-- story cards: shown by scroll position (data-in / data-out are 0 to 1) -->
+    <section class="card intro" data-in="0" data-out="0.055">
+      <p class="k">A KULU day</p>
+      <h1>Shop.<br>Wash.<br><span>Shap shap.</span></h1>
+      <p>Scroll to drive.</p>
+      <div class="mouse" aria-hidden="true"><i></i></div>
+    </section>
+
+    <section class="card" data-in="0.07" data-out="0.19">
+      <p class="k">01 · Book</p>
+      <h2>Book in the app.</h2>
+      <p>Pick a 15-minute slot, even 10 minutes before you arrive. Then drive in and hand us your keys.</p>
+    </section>
+
+    <section class="card" data-in="0.215" data-out="0.415">
+      <p class="k">02 · Wash</p>
+      <h2>Get clean while you shop.</h2>
+      <p>Off you go. We wash your car inside and out while you’re at the shops or the gym, and the app shows you when it’s ready.</p>
+      <p class="fact"><b>30–60 min</b> while you do your thing</p>
+    </section>
+
+    <section class="card" data-in="0.525" data-out="0.615">
+      <p class="k">03 · Coffee</p>
+      <h2>Coffee while you wait.</h2>
+      <p>Our bigger sites have a KULU Coffee bar right by the wash bays. At FitLife, grab one at The Brew Crew.</p>
+    </section>
+
+    <section class="card" data-in="0.625" data-out="0.668">
+      <p class="k">04 · Own a KULU</p>
+      <h2>Three designs for every space.</h2>
+      <p>We fund, build, staff and run it. Keep scrolling to see the line-up.</p>
+    </section>
+
+    <section class="card plan" data-in="0.672" data-out="0.712">
+      <p class="k">Design 1</p>
+      <h2>KUNYE</h2>
+      <p class="fit">Fits in about <b>4 bays</b></p>
+      <img src="/assets/images/plan-kunye.jpg" alt="Layout plan for KUNYE: one KULU container and one wash bay" width="378" height="420" loading="lazy">
+      <p>One 6m container, one wash bay, a booked bay and a collect bay.</p>
+    </section>
+
+    <section class="card plan" data-in="0.737" data-out="0.792">
+      <p class="k">Design 2</p>
+      <h2>PEDI</h2>
+      <p class="fit">Fits in about <b>7 bays</b></p>
+      <img src="/assets/images/plan-pedi.jpg" alt="Layout plan for PEDI: one KULU container and two wash bays under a sun shade" width="609" height="389" loading="lazy">
+      <p>Two wash bays under a sun shade, with an optional coffee pod and parcel locker.</p>
+    </section>
+
+    <section class="card plan" data-in="0.817" data-out="0.872">
+      <p class="k">Design 3</p>
+      <h2>DRIE</h2>
+      <p class="fit">Fits in about <b>10 bays</b></p>
+      <img src="/assets/images/plan-drie.jpg" alt="Layout plan for DRIE: three wash bays, a coffee container and seating" width="840" height="420" loading="lazy">
+      <p>Three wash bays, a coffee container, parcel lockers and seating for shoppers.</p>
+    </section>
+
+    <section class="card finale" data-in="0.935" data-out="1.01">
+      <p class="k">That’s the KULU way</p>
+      <h2>Your car. Clean.<br><span>Shap shap.</span></h2>
+      <div class="ctas">
+        <a class="btn" href="/#app">Get the app</a>
+        <a class="btn ghost" href="/ownerkulu/">Own a KULU</a>
+        <button class="btn ghost" type="button" data-go="0">Drive again ↺</button>
+      </div>
+    </section>
+  </div>
+</main>
+
+<noscript><p class="nojs">This demo needs JavaScript. <a href="/">Go to the KULU site</a>.</p></noscript>
+</body>
+</html>

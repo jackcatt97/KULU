@@ -13,7 +13,7 @@
   ],
   "headers": [
     {
-      "source": "/app(/.*)?",
+      "source": "/(app|demo)(/.*)?",
       "headers": [
         {
           "key": "X-Robots-Tag",
