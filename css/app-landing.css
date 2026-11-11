@@ -350,3 +350,5 @@ nav>.in{display:flex;align-items:center;justify-content:space-between;gap:16px;p
   @keyframes sheet-in{from{transform:translateY(40px);opacity:0}}
 }
 @media (prefers-reduced-motion:reduce){.sheet[open]{animation:none}.dos li{transition:none}}
+.sheet-note{margin-top:16px;padding:14px 16px;border:1px solid var(--lime);border-radius:14px;color:var(--white)}
+.sheet-note b{color:var(--lime)}
