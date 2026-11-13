@@ -37,12 +37,14 @@ const CONFIG = {
   APP_STORE_URL: "",
   PLAY_STORE_URL: "",
   OPENS: "08:00",
-  CLOSES: "18:00"
+  CLOSES: "18:00",
+  OPENING_AT: "2027-01-11T09:00:00+02:00"
 };
 ```
 
 - **APP_STORE_URL / PLAY_STORE_URL**: paste the store links when the app is live. The App Store and Google Play buttons, and the QR code (which points to `kulugroup.co.za/app`), start sending people to the stores straight away. While they're empty, the buttons say "Coming soon".
 - **OPENS / CLOSES**: drive the "Open now" badge on the homepage (South African time, every day).
+- **OPENING_AT**: when KULU @FitLife opens (`"2027-01-11T09:00:00+02:00"`, Cape Town time). Until then the homepage shows a live countdown; at that moment it switches to the "Open now" badge by itself.
 
 - **FORMSPREE_ID** is the last part of your form's endpoint. If Formspree shows `https://formspree.io/f/abcdwxyz`, the ID is `abcdwxyz`.
 - **CONFIG** fills in the "Say hello" section. The WhatsApp link (`https://wa.me/27632817102`) is built from the number automatically, and the emails become `mailto:` links.

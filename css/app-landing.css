@@ -352,3 +352,16 @@ nav>.in{display:flex;align-items:center;justify-content:space-between;gap:16px;p
 @media (prefers-reduced-motion:reduce){.sheet[open]{animation:none}.dos li{transition:none}}
 .sheet-note{margin-top:16px;padding:14px 16px;border:1px solid var(--lime);border-radius:14px;color:var(--white)}
 .sheet-note b{color:var(--lime)}
+
+/* opening countdown (homepage hero) */
+.countdown{display:inline-grid;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px 16px 16px}
+.cd-label{display:flex;align-items:center;gap:10px;font:600 14px/1.25 var(--body);color:var(--grey2)}
+.cd-label .dot{background:var(--lime);animation:ping 2s infinite}
+.cd-label b{color:var(--lime);font-weight:700}
+.cd-boxes{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.cd-boxes div{display:grid;justify-items:center;gap:4px;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:10px 8px 8px;min-width:66px}
+.cd-boxes b{font:900 30px/1 var(--wide);font-stretch:112%;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.cd-boxes span{font:600 10px/1 var(--body);letter-spacing:.16em;text-transform:uppercase;color:var(--grey)}
+.countdown+h1{margin-top:22px}
+@media (max-width:400px){.cd-boxes div{min-width:0;padding:9px 4px 7px}.cd-boxes b{font-size:24px}.cd-label{font-size:13px}}
+@media (prefers-reduced-motion:reduce){.cd-label .dot{animation:none}}

@@ -20,8 +20,9 @@ const CONFIG = {
   OPENS: "08:00",
   CLOSES: "18:00",
 
-  // First day the site is open (YYYY-MM-DD). Before it, the badge says "Opening 11 January"
-  OPENING_DATE: "2027-01-11"
+  // When the site opens, in Cape Town time (+02:00). Until then the homepage shows a
+  // countdown and the site card says "Opening 11 January"; afterwards, "Open now" / "Closed now"
+  OPENING_AT: "2027-01-11T09:00:00+02:00"
 };
 
 /* ------------------------------------------------------------------ */
@@ -56,14 +57,34 @@ if (document.body.hasAttribute("data-app-redirect")) {
   else document.body.classList.add("show-stores");
 }
 
-// "Open now" badge from CONFIG.OPENING_DATE, CONFIG.OPENS and CONFIG.CLOSES
-document.querySelectorAll("[data-open-status]").forEach(function (el) {
-  var tz = "Africa/Johannesburg", text = el.querySelector(".status-text"), suffix = el.closest(".hero") ? " · KULU @FitLife" : "";
-  var today = new Intl.DateTimeFormat("en-CA", { timeZone: tz }).format(new Date()); // YYYY-MM-DD
-  if (CONFIG.OPENING_DATE && today < CONFIG.OPENING_DATE) {
-    var d = new Date(CONFIG.OPENING_DATE + "T12:00:00Z");
-    el.classList.add("soon");
-    text.innerHTML = "<b>Opening " + new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "long", timeZone: "UTC" }).format(d) + "</b>" + suffix;
+// Opening countdown, then the "Open now" badge (CONFIG.OPENING_AT, OPENS and CLOSES)
+var openingAt = CONFIG.OPENING_AT ? new Date(CONFIG.OPENING_AT) : null;
+var countdown = document.querySelector("[data-countdown]");
+function pad(n) { return (n < 10 ? "0" : "") + n; }
+function renderStatus() {
+  var notYet = openingAt && Date.now() < openingAt.getTime();
+  if (countdown) {
+    countdown.hidden = !notYet;
+    var heroStatus = countdown.parentNode.querySelector("[data-open-status]");
+    if (heroStatus) heroStatus.hidden = notYet;
+  }
+  document.querySelectorAll("[data-open-status]").forEach(function (el) { renderBadge(el, notYet); });
+  return notYet;
+}
+function tickCountdown() {
+  var ms = openingAt.getTime() - Date.now();
+  if (ms <= 0) { clearInterval(cdTimer); renderStatus(); return; }
+  var left = Math.ceil(ms / 1000);
+  var parts = { d: Math.floor(left / 86400), h: Math.floor(left / 3600) % 24, m: Math.floor(left / 60) % 60, s: left % 60 };
+  countdown.querySelectorAll("[data-cd]").forEach(function (b) { b.textContent = pad(parts[b.dataset.cd]); });
+}
+if (renderStatus() && countdown) { tickCountdown(); var cdTimer = setInterval(tickCountdown, 1000); }
+
+function renderBadge(el, notYet) {
+  var text = el.querySelector(".status-text"), suffix = el.closest(".hero") ? " · KULU @FitLife" : "";
+  el.classList.toggle("soon", notYet);
+  if (notYet) {
+    text.innerHTML = "<b>Opening " + new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "long", timeZone: "Africa/Johannesburg" }).format(openingAt) + "</b>" + suffix;
     return;
   }
   var parts = new Intl.DateTimeFormat("en-GB", { timeZone: "Africa/Johannesburg", hour: "2-digit", minute: "2-digit", hourCycle: "h23" }).format(new Date());
@@ -72,7 +93,7 @@ document.querySelectorAll("[data-open-status]").forEach(function (el) {
   el.classList.toggle("open", isOpen);
   text.innerHTML = (isOpen ? "<b>Open now</b> · until " + CONFIG.CLOSES : "Closed now · opens " + CONFIG.OPENS) +
     suffix;
-});
+}
 
 // Pop-up panels (e.g. "More about this KULU"). data-dialog-focus jumps to a part of the panel
 document.querySelectorAll("[data-dialog]").forEach(function (btn) {
