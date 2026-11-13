@@ -76,7 +76,12 @@ function tickCountdown() {
   if (ms <= 0) { clearInterval(cdTimer); renderStatus(); return; }
   var left = Math.ceil(ms / 1000);
   var parts = { d: Math.floor(left / 86400), h: Math.floor(left / 3600) % 24, m: Math.floor(left / 60) % 60, s: left % 60 };
-  countdown.querySelectorAll("[data-cd]").forEach(function (b) { b.textContent = pad(parts[b.dataset.cd]); });
+  countdown.querySelectorAll("[data-cd]").forEach(function (b) {
+    var v = pad(parts[b.dataset.cd]);
+    if (b.textContent === v) return;
+    b.textContent = v;
+    b.classList.remove("tick"); void b.offsetWidth; b.classList.add("tick"); // replay the flip-in
+  });
 }
 if (renderStatus() && countdown) { tickCountdown(); var cdTimer = setInterval(tickCountdown, 1000); }
 
