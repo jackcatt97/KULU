@@ -317,8 +317,8 @@ nav>.in{display:flex;align-items:center;justify-content:space-between;gap:16px;p
 /* site card extras */
 .site-intro{margin-top:14px;color:var(--white);font-size:18px;max-width:30em}
 .dd-more{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px}
-.more{background:none;border:1px solid var(--line2);color:var(--white);font:600 13px/1 var(--body);padding:7px 12px;border-radius:999px;cursor:pointer}
-.more:hover{border-color:var(--white)}
+.more-btn{background:none;border:1px solid var(--line2);color:var(--white);font:600 13px/1 var(--body);padding:7px 12px;border-radius:999px;cursor:pointer}
+.more-btn:hover{border-color:var(--white)}
 .status.soon .dot{background:var(--lime)}
 .status.soon b{color:var(--lime);font-weight:700}
 
