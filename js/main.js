@@ -168,6 +168,11 @@ tp.addEventListener("change", sync); tn.addEventListener("change", sync);
 document.querySelectorAll("[data-partner]").forEach(function (a) {
   a.addEventListener("click", function () { tp.checked = true; sync(); });
 });
+// Buttons that jump to the form with an option chosen, e.g. data-pick="t-news"
+document.querySelectorAll("[data-pick]").forEach(function (a) {
+  a.addEventListener("click", function () { var r = document.getElementById(a.dataset.pick); if (r) { r.checked = true; sync(); } });
+});
+sync();
 
 // Form: send to Formspree
 var ok = document.getElementById("f-ok"), err = document.getElementById("f-err"),

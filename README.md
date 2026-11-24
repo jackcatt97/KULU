@@ -4,12 +4,12 @@ The KULU site: a plain static site with no framework and no build step. `referen
 
 ```
 index.html             homepage: the customer site (book in the app, washes, find us)
-ownerkulu/index.html   kulugroup.co.za/ownerkulu: the partner site ("Own a KULU")
+ownerkulu/index.html   kulugroup.co.za/ownerkulu: Own a KULU, for site owners and franchisees (from the pitch deck)
 app/index.html         kulugroup.co.za/app: the QR code target, sends phones to the right app store
 404.html               "Lost? Shap shap, back home."
-css/app-landing.css    styles for the homepage and /app
-css/styles.css         styles for /ownerkulu (from the approved design)
-css/owner.css          /ownerkulu restyle: lime accent and Archivo headings
+css/app-landing.css    styles for the homepage, /app and /ownerkulu
+css/own.css            extra styles for /ownerkulu
+css/styles.css         original design styles, still used by 404.html
 js/main.js             settings (contact details, Formspree, app store links, hours) and all page behaviour
 assets/logos/          KULU logos as SVG (black and white versions)
 assets/images/         illustration, layout plans, QR code, social share image
