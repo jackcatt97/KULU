@@ -41,12 +41,25 @@ document.querySelectorAll("[data-config]").forEach(function (a) {
 var yr = document.getElementById("yr");
 if (yr) yr.textContent = new Date().getFullYear();
 
-// App store buttons: real store links once CONFIG has them
+// App store buttons: real store links once CONFIG has them, otherwise "Coming soon" and not clickable
 document.querySelectorAll("[data-store]").forEach(function (a) {
   var url = CONFIG[a.dataset.store], label = a.querySelector("[data-store-label]");
-  if (url) a.href = url;
-  else if (label) label.textContent = "Coming soon to";
+  if (url) { a.href = url; return; }
+  a.removeAttribute("href"); a.setAttribute("aria-disabled", "true"); a.classList.add("soon");
+  if (label) label.textContent = "Coming soon to";
 });
+
+// Until the app is live the page shows "App coming soon" (the default in the HTML).
+// As soon as either store link is set, swap in the live wording and links.
+if (CONFIG.APP_STORE_URL || CONFIG.PLAY_STORE_URL) {
+  document.querySelectorAll("[data-live-text]").forEach(function (el) {
+    el.textContent = el.dataset.liveText;
+    if (el.dataset.liveHref) el.href = el.dataset.liveHref;
+    el.classList.remove("soon"); el.removeAttribute("aria-disabled");
+  });
+  document.querySelectorAll(".qr-wrap").forEach(function (q) { q.classList.remove("soon"); });
+  document.querySelectorAll("[data-hide-live]").forEach(function (el) { el.hidden = true; });
+}
 
 // /app (the QR code target): send phones to the right store
 if (document.body.hasAttribute("data-app-redirect")) {

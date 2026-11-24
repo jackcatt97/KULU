@@ -42,7 +42,7 @@ const CONFIG = {
 };
 ```
 
-- **APP_STORE_URL / PLAY_STORE_URL**: paste the store links when the app is live. The App Store and Google Play buttons, and the QR code (which points to `kulugroup.co.za/app`), start sending people to the stores straight away. While they're empty, the buttons say "Coming soon".
+- **APP_STORE_URL / PLAY_STORE_URL**: paste the store links when the app is live. The App Store and Google Play buttons, and the QR code (which points to `kulugroup.co.za/app`), start sending people to the stores straight away. While both are empty, the whole site is in "app coming soon" mode: the QR codes are faded with a "Coming soon" badge, the booking buttons say "App coming soon" and don't click through, and the top button says "Get launch news". Add either link and it all switches to "Book in the app" and "Scan to get the app" by itself.
 - **OPENS / CLOSES**: drive the "Open now" badge on the homepage (South African time, every day).
 - **OPENING_AT**: when KULU @FitLife opens (`"2027-01-11T09:00:00+02:00"`, Cape Town time). Until then the homepage shows a live countdown; at that moment it switches to the "Open now" badge by itself.
 
