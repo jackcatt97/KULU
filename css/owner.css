@@ -36,3 +36,12 @@ nav .home{display:block}
 .msg{border-radius:12px}
 
 @media (max-width:480px){.hero h1{font-size:clamp(40px,12.5vw,56px)!important}}
+
+/* KULU Franchise lockup: badge + name, kept small */
+.brandrow{display:flex;align-items:center;gap:18px;min-width:0}
+.kf-lock{display:inline-flex;align-items:center;gap:9px;text-decoration:none;color:#b8b8b8;font:700 15px/1 var(--body);white-space:nowrap}
+.kf{width:26px;height:26px;flex:none;filter:drop-shadow(0 0 6px rgba(211,253,92,.45))}
+nav .kf-lock{padding-left:18px;border-left:1px solid #2a2a2a}
+.kf-lock.big{margin-bottom:22px;font-size:17px;color:#cfcfcf}
+.kf-lock.big .kf{width:36px;height:36px}
+@media (max-width:640px){nav .kf-lock span{display:none}nav .kf-lock{padding-left:12px}.brandrow{gap:12px}nav .logo{width:100px}}
