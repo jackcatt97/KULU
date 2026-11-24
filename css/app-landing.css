@@ -284,7 +284,6 @@ nav>.in{display:flex;align-items:center;justify-content:space-between;gap:16px;p
 @media (max-width:900px){
   .hero .in,.how .in,.faq .in,.contact .in,.fgrid{grid-template-columns:minmax(0,1fr)}
   .hero .in{padding-block:40px 72px}
-  .hero-phone{width:min(84%,320px)}
   .how .phone{width:min(84%,320px)}
   .wgrid,.tgrid{grid-template-columns:minmax(0,1fr)}
   .extras,.more .in{grid-template-columns:minmax(0,1fr)}
@@ -392,3 +391,57 @@ nav>.in{display:flex;align-items:center;justify-content:space-between;gap:16px;p
 .btn.own{gap:10px}.btn.own .kf{width:24px;height:24px}
 .mnav a.own{display:flex;gap:12px}.mnav .kf{width:26px;height:26px}
 .line span.own{gap:6px}.line .kf{width:16px;height:16px}
+
+/* phone mock-up screens shared by the homepage and /ownerkulu */
+/* pick your wash */
+.opt-w{margin-top:9px;display:flex;justify-content:space-between;gap:8px;align-items:flex-start;padding:11px 12px;border:1px solid var(--line);border-radius:12px;background:var(--card)}
+.opt-w b{display:block;font:800 13px/1.15 var(--wide);font-stretch:112%}
+.opt-w span{display:block;margin-top:3px;color:var(--grey);font-size:10px;line-height:1.3}
+.opt-w strong{font:900 14px/1 var(--wide);font-stretch:112%;white-space:nowrap}
+.opt-w.on{background:var(--white);color:var(--bg);border-color:var(--white)}
+.opt-w.on span{color:#555}
+.s-foot{margin-top:auto;display:flex;align-items:center;gap:12px}
+.s-foot>div:first-child{display:grid;gap:2px}
+.s-foot span{font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--grey);font-weight:600}
+.s-foot b{font:900 20px/1 var(--wide);font-stretch:112%}
+.s-foot .s-btn{flex:1;margin:0}
+/* booked */
+.s-steps{margin-top:12px;display:grid}
+.s-steps li{display:grid;grid-template-columns:18px 1fr;gap:8px;padding:9px 0;border-top:1px solid var(--line);font-size:11px;line-height:1.35;color:var(--grey2)}
+.s-steps b{color:var(--white);font-weight:900}
+/* lock screen */
+.lock{background:radial-gradient(ellipse at 50% 0%,#2a2f1a,#0d0d0d 60%)!important;align-items:center;text-align:center}
+.l-date{margin-top:34px;font-weight:600;font-size:12px;color:#ddd}
+.l-time{font:900 64px/1 var(--wide);font-stretch:100%;letter-spacing:-.02em;margin-top:2px}
+.notes{margin-top:auto;width:100%;display:grid;gap:8px;text-align:left}
+.ntf,.toast{display:flex;gap:10px;align-items:flex-start;background:rgba(40,40,40,.86);border-radius:16px;padding:10px 11px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.ntf.dim{opacity:.75}
+.ic{width:28px;height:28px;flex:none;border-radius:7px;background:var(--bg);display:grid;place-items:center;box-shadow:0 0 0 1px #333}
+.ic img{width:22px;height:auto}
+.nt{display:flex;justify-content:space-between;gap:8px;font-size:9px;color:var(--grey);text-transform:uppercase;letter-spacing:.06em}
+.nt b{font-size:9px!important;color:var(--grey)!important;font-weight:700!important}
+.nt i{font-style:normal;text-transform:none;letter-spacing:0}
+.ntf>div,.toast>div{flex:1;min-width:0}
+.ntf>div>b,.toast>div>b{display:block;font-size:12px;font-weight:700;color:var(--white);margin-top:2px}
+.ntf>div>span,.toast>div>span{display:block;font-size:10.5px;line-height:1.35;color:#cfcfcf;margin-top:2px}
+/* floating notification, like the deck */
+.toast{position:absolute;z-index:4;right:-6px;bottom:22px;width:300px;background:#f4f4f0;color:var(--bg);border-radius:20px;padding:14px 16px;box-shadow:0 24px 50px rgba(0,0,0,.55),0 0 0 1px rgba(211,253,92,.5);transform:rotate(-2deg)}
+.toast .ic{width:38px;height:38px;border-radius:10px}.toast .ic img{width:30px}
+.toast .nt,.toast .nt b{color:#555!important}
+.toast>div>b{color:var(--bg);font-size:15px}
+.toast>div>span{color:#333;font-size:12.5px}
+
+
+/* homepage hero: booking phone behind, lock screen in front, notification on top */
+.hero-phones{position:relative;justify-self:center;width:100%;max-width:520px;height:640px;zoom:var(--z,1)}
+.hero-phones .phone{position:absolute;width:270px;aspect-ratio:9/18.5;padding:9px;border-radius:42px;box-shadow:0 0 0 1px #2e2e2e,0 30px 60px rgba(0,0,0,.6)}
+.hero-phones .screen{border-radius:34px;padding:20px 16px 16px}
+.hp-back{left:0;top:40px;transform:rotate(-8deg)}
+.hp-back .screen{filter:brightness(.8)}
+.hp-front{right:0;top:0;transform:rotate(4deg);z-index:2;box-shadow:0 0 0 1px #2e2e2e,0 40px 80px -20px rgba(211,253,92,.22),0 30px 60px rgba(0,0,0,.6)!important}
+.hero-phones .lock .notes{margin-top:26px}
+.hero-phones .toast{right:auto;left:10px;bottom:26px;z-index:3}
+@media (max-width:1100px){.hero-phones{--z:.88}}
+@media (max-width:900px){.hero-phones{--z:.8;max-width:500px}}
+@media (max-width:480px){.hero-phones{--z:.66}}
+@media (max-width:380px){.hero-phones{--z:.6}}
